@@ -1,5 +1,6 @@
 .autotest
 History.txt
+LICENSE
 Manifest.txt
 PostInstall.txt
 README.rdoc
