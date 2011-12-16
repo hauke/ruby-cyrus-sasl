@@ -1,32 +1,42 @@
 = ruby-cyrus-sasl
 
-* http://github.com/#{github_username}/#{project_name}
+* https://github.com/hauke/ruby-cyrus-sasl
 
 == DESCRIPTION:
 
-FIX (describe your package)
+This package provides a ruby binding for Cyrus SASL.
+For now it only contains the parts needed for the SASL Client, but the 
+architecture is build to also support the server Part.
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+* Cyrus sasl client ruby binding
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+require 'ruby-cyrus-sasl/imap'
+
+imap = Net::IMAP.new('imap.example.org')
+imap.authenticate_cyrus('hauke', 'test', 'hauke')
+imap.examine('INBOX')
+imap.search(["ALL"]).each do |message_id|
+  envelope = imap.fetch(message_id, "ENVELOPE")[0].attr["ENVELOPE"]
+  puts "#{envelope.from[0].name}: \t#{envelope.subject}"
+end
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+* cyrus sasl
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+* sudo gem install
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2011 FIXME full name
+Copyright (c) 2011 Hauke Mehrtens
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
